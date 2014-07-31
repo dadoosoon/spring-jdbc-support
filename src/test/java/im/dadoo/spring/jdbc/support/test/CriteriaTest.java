@@ -22,8 +22,8 @@ public class CriteriaTest {
   @Test
   public void testWhere() {
     List<Condition> conds = new ArrayList<Condition>();
-    //conds.add(Conditions.eq("id"));
-    //conds.add(Conditions.between("utc"));
+    conds.add(Conditions.eq("id"));
+    conds.add(Conditions.between("utc"));
     conds.add(Conditions.in("name"));
     System.out.println(Criteria.where(conds));
   }

@@ -6,8 +6,8 @@
 
 package im.dadoo.spring.jdbc.support.condition;
 
+import im.dadoo.spring.jdbc.support.Pair;
 import im.dadoo.spring.jdbc.support.util.Util;
-import org.apache.commons.lang3.tuple.ImmutablePair;
 
 /**
  * 辅助类，提供一系列的方法以便于生成Condition
@@ -68,8 +68,16 @@ public final class Conditions {
     return Conditions.lt(field, Util.placeholder(field));
   }
   
+  public static Condition like(String field, String value) {
+    return new Condition(field, Operation.LIKE, value);
+  }
+  
+  public static Condition like(String field) {
+    return Conditions.like(field, Util.placeholder(field));
+  }
+  
   public static Condition between(String field, String begin, String end) {
-    return new Condition(field, Operation.BETWEEN, ImmutablePair.of(begin, end));
+    return new Condition(field, Operation.BETWEEN, Pair.of(begin, end));
   }
   
   public static Condition between(String field) {

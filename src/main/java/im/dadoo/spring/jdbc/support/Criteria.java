@@ -7,7 +7,6 @@ package im.dadoo.spring.jdbc.support;
 
 import im.dadoo.spring.jdbc.support.condition.Condition;
 import java.util.List;
-import org.apache.commons.lang3.tuple.Pair;
 
 /**
  *
@@ -51,9 +50,9 @@ public final class Criteria {
           Pair<String, String> pair = (Pair<String, String>)condition.getValue();
           sb.append(condition.getField()).append(" ")
                   .append(condition.getOp().getName()).append(" ")
-                  .append(pair.getLeft()).append(" ")
+                  .append(pair.getV1()).append(" ")
                   .append("AND").append(" ")
-                  .append(pair.getRight());
+                  .append(pair.getV2());
           break;
         case IN:
           sb.append(condition.getField()).append(" ")
