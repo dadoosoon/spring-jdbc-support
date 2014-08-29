@@ -7,6 +7,7 @@
 package im.dadoo.spring.jdbc.support.test;
 
 import im.dadoo.spring.jdbc.support.Criteria;
+import im.dadoo.spring.jdbc.support.Pair;
 import im.dadoo.spring.jdbc.support.condition.Condition;
 import im.dadoo.spring.jdbc.support.condition.Conditions;
 import java.util.ArrayList;
@@ -26,5 +27,13 @@ public class CriteriaTest {
     conds.add(Conditions.between("utc"));
     conds.add(Conditions.in("name"));
     System.out.println(Criteria.where(conds));
+  }
+  
+  @Test
+  public void testOrderBy() {
+    List<Pair<String, String>> orders = new ArrayList<>();
+    orders.add(Pair.of("name", "DESC"));
+    orders.add(Pair.of("id", "ASC"));
+    System.out.println(Criteria.orderBy(orders));
   }
 }

@@ -30,6 +30,19 @@ public final class Criteria {
     return sb.toString();
   }
   
+  public static String orderBy(final List<Pair<String, String>> orders) {
+    StringBuilder sb = new StringBuilder();
+    if (orders != null && !orders.isEmpty()) {
+      sb.append("ORDER BY ");
+      Pair<String, String> first = orders.get(0);
+      sb.append(first.getV1()).append(" ").append(first.getV2());
+      for (int i = 1; i < orders.size(); i++) {
+        Pair<String, String> order = orders.get(i);
+        sb.append(",").append(order.getV1()).append(" ").append(order.getV2());
+      }
+    }
+    return sb.toString();
+  }
   private static String makeConditionSql(Condition condition) {
     StringBuilder sb = new StringBuilder();
     if (condition != null && condition.getField() != null 
